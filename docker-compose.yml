@@ -1,0 +1,14 @@
+version: '3.7'
+
+services:
+  shiny:
+    build:
+      context: .
+      dockerfile: Dockerfile  # Path to your Dockerfile
+    image: merqheat:latest
+    ports:
+      - "3838:3838"
+    environment:
+      - USERID=${USERID:-1000}
+      - GROUPID=${GROUPID:-1000}
+    command: ["R", "-e", "shiny::runApp('/srv/shiny-server/app', host = '0.0.0.0', port = 3838)"]
