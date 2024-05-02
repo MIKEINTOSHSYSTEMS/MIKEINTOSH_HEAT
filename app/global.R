@@ -413,7 +413,7 @@ file_ext <- function (x)
 
 get_data_folders <- function() {
   folders <- list.files("data/user-data/")
-  #folders <- folders[!folders%in%c("HEAT-data")]
+  folders <- folders[!folders%in%c("HEAT-data")]
   ss <- unlist(strsplit(folders, "____"))
   folders <- unique(ss[!grepl(".rds|.txt", ss, ignore.case = TRUE)])
   

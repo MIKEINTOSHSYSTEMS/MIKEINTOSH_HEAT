@@ -16,6 +16,9 @@ jobs:
       - name: Set up Docker Buildx
         uses: docker/setup-buildx-action@v1
 
+      - name: Log in to Docker Hub
+        run: echo "${{ secrets.DOCKERHUB_PASSWORD }}" | docker login -u "${{ secrets.DOCKERHUB_USERNAME }}" --password-stdin
+
       - name: Build and Push Docker Image
         id: docker_build
         uses: docker/build-push-action@v2
@@ -24,4 +27,4 @@ jobs:
           file: ./Dockerfile
           platforms: linux/amd64
           push: true
-          tags: mikeintosh/mikeintos_heat:latest
+          tags: ${{ secrets.DOCKERHUB_USERNAME }}/mikeintosh_heat:latest

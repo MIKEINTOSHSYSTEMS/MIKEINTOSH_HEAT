@@ -20,8 +20,7 @@
 .rdata[['first_time']] <- TRUE
 #.rdata[['plot_height']] <- 600
 
-#.rdata[['countryinfo']] <- readRDS("data/HEAT-data/countryinfo.RDS")
-.rdata[['countryinfo']] <- readRDS("data/countryinfo.RDS")
+.rdata[['countryinfo']] <- readRDS("./data/HEAT-data/countryinfo.RDS")
 
 
 # *****************************************************************************

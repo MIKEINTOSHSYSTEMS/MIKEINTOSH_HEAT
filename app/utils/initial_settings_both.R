@@ -176,8 +176,7 @@ table_options <- NULL
 
 # *****************************************************************************
 
-#summeasures <- readRDS("data/HEAT-data/summeasures.RDS")
-summeasures <- readRDS("data/summeasures.RDS")
+summeasures <- readRDS("./data/HEAT-data/summeasures.RDS")
 #summeasure_info <- create_summary_measures_tables(summeasures)
 
 

@@ -75,8 +75,7 @@ get_upload_data <- eventReactive(input$doUploadBtn, {
   dat <- mutate(dat, iso3 = as.character(iso3))
   
   # correct iso3 codes and countries ----
-  #isomap <- readRDS("data/HEAT-data/countryinfo.RDS") %>% 
-  isomap <- readRDS("data/countryinfo.RDS") %>% 
+  isomap <- readRDS("./data/HEAT-data/countryinfo.RDS") %>% 
     select(country, iso3) %>% 
     mutate(country_new = country, iso3_new = iso3)
   
