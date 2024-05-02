@@ -1,0 +1,30 @@
+stages:
+  - build
+#  - deploy
+
+build-app:
+  stage: build
+  image: docker:stable
+  services:
+    - docker:dind
+  variables:
+    APP_NAME: "hello"
+    CONTAINER_IMAGE: "$CI_REGISTRY/$CI_PROJECT_PATH/$APP_NAME"
+    DOCKER_HOST: tcp://docker:2375
+    DOCKER_DRIVER: overlay2
+  only:
+    - master
+  script:
+    - docker login -u gitlab-ci-token -p $CI_JOB_TOKEN $CI_REGISTRY
+    - docker pull $CONTAINER_IMAGE:latest || true
+    - docker build --cache-from $CONTAINER_IMAGE:latest --tag $CONTAINER_IMAGE:latest .
+    - docker push $CONTAINER_IMAGE:latest
+
+#trigger-webhook:
+#  stage: deploy
+#  image: pstauffer/curl:latest
+#  only:
+#    - master
+#  script:
+#    - "curl --header 'X-Gitlab-Token: secret_token_1234' http://YOUR_IP:9000/hooks/redeploy-webhook"
+

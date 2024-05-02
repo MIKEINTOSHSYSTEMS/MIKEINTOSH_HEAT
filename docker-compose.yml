@@ -1,14 +1,13 @@
-version: '3.7'
+version: '3.8'  # Adjust if needed based on your Docker version
 
 services:
-  shiny:
-    build:
-      context: .
-      dockerfile: Dockerfile  # Path to your Dockerfile
-    image: merqheat:latest
+  shiny-app:
+    build: .  # Build the image from the current directory (./)
     ports:
-      - "3838:3838"
-    environment:
-      - USERID=${USERID:-1000}
-      - GROUPID=${GROUPID:-1000}
-    command: ["R", "-e", "shiny::runApp('/srv/shiny-server/app', host = '0.0.0.0', port = 3838)"]
+      - "3838:3838"  # Map container port 3838 to host port 3838
+    volumes:
+      - ./app:/home/app  # Mount your application directory on the host to /home/app in the container
+
+# Additional considerations (optional)
+# - Define environment variables for your app
+# - Use a separate service for a reverse proxy like Nginx
