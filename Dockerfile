@@ -1,6 +1,7 @@
 # Use rocker/verse image with a specific R version (optional)
 # Example: For R 4.2.0
-FROM rocker/verse:4.2.0
+#FROM rocker/verse:4.2.0
+FROM rocker/shiny:latest
 
 # Set working directory (optional, but good practice)
 WORKDIR /home/app
