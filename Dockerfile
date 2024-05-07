@@ -16,7 +16,7 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     libssh2-1-dev 
 
 # Install DT and highcharter packages directly from CRAN within the container (recommended)
-RUN R -e "install.packages(c('shiny', 'ggplot2', 'grid', 'gridExtra', 'RColorBrewer', 'dplyr', 'DT', 'data.table', 'readxl', 'tidyr', 'stringr', 'broom', 'fst', 'purrr', 'htmltools', 'scales', 'highcharter', 'shinyBS', 'viridis', 'waiter', 'shinyvalidate', 'shinyWidgets', 'heatdata', 'heatmeasures'), repos='https://cran.r-project.org')"
+RUN R -e "install.packages(c('shiny', 'ggplot2', 'grid', 'gridExtra', 'RColorBrewer', 'dplyr', 'DT', 'data.table', 'readxl', 'tidyr', 'stringr', 'broom', 'fst', 'purrr', 'htmltools', 'scales', 'highcharter', 'shinyBS', 'viridis', 'waiter', 'shinyvalidate', 'shinyWidgets', 'heatdata', 'heatmeasures', 'pkgload'), repos='https://cran.r-project.org')"
 
 # Install remotes package from CRAN
 RUN R -e "install.packages('remotes')"
